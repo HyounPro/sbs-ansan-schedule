@@ -191,11 +191,11 @@ function dateKey(d) {
   return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 }
 
-// 3/16(월) ~ 4/10(금) 주별 날짜 배열
+// 3/16(월) ~ 4/17(금) 주별 날짜 배열
 function getWeeks() {
   const weeks = [];
   const start = new Date(2026, 2, 16);
-  const end   = new Date(2026, 3, 10);
+  const end   = new Date(2026, 3, 17);
   let cur = new Date(start);
   let week = [];
   while (cur <= end) {
@@ -206,7 +206,7 @@ function getWeeks() {
     }
     cur.setDate(cur.getDate() + 1);
   }
-  // 마지막 주 (4/6~4/10)
+  // 마지막 주 (4/13~4/17)
   if (week.length) {
     while (week.length < 5) week.push(null);
     weeks.push(week);
@@ -298,13 +298,14 @@ function pattern3() {
 // 3/24(화)주황, 3/26(목)주황
 // 3/31(화)주황, 4/2(목)주황, 4/3(금)주황
 // 4/7(화)주황, 4/9(목)주황
-// 4/14(화)주황, 4/16(목)주황 → 범위 밖이므로 제외
+// 4/14(화)주황, 4/16(목)주황
 function pattern4() {
   const map = new Map();
   const classDates = [
     '2026-03-24', '2026-03-26',
     '2026-03-31', '2026-04-02', '2026-04-03',
     '2026-04-07', '2026-04-09',
+    '2026-04-14', '2026-04-16',
   ];
   classDates.forEach(ds => map.set(ds, 'orange'));
   return map;
@@ -337,7 +338,7 @@ const PATTERNS = [
     ]
   },
   {
-    title: '2026년 3월 16일 ~ 4월 10일 | 백엔드마스터3(자바2)',
+    title: '2026년 3월 16일 ~ 4월 17일 | 백엔드마스터3(자바2)',
     map: pattern4,
     desc: [
       { color: 'orange', text: '화목화목금 (격일) — 개강 3/24' },
