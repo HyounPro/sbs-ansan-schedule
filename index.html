@@ -369,7 +369,13 @@ function renderCalendar() {
         const key = dateKey(d);
         const cls = classMap.get(key);
         const dayClass = cls ? `class-${cls}` : 'empty';
-        const label = cls === 'blue' ? '월수금' : cls === 'orange' ? '화목금' : '';
+        const labelMap = [
+          { blue: '월~목', orange: '' },
+          { blue: '월수금', orange: '화목금' },
+          { blue: '월수금', orange: '화목금' },
+          { blue: '', orange: '화목금' },
+        ];
+        const label = cls === 'blue' ? labelMap[currentTab].blue : cls === 'orange' ? labelMap[currentTab].orange : '';
         return `
           <div class="cal-day ${dayClass}">
             <span class="day-num">${d.getDate()}</span>
